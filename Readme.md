@@ -8,3 +8,8 @@ This module dives into the fundamentals of relational database connections using
 
 
 ## 47-1 Foreign Key Explained
+- Foreign key is one tables primary key is set in another table and makes a relationship 
+
+![alt text](image.png)
+
+![alt text](image-1.png)
