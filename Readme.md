@@ -84,5 +84,45 @@ VALUES('Chazid Post');
 select * from post as p
 left join users as u on  p.user_id = u.id;
 ```
+```sql 
+select * from post as p
+left outer join users as u on  p.user_id = u.id;
+```
 
 ![alt text](image-4.png)
+
+## 47-5 Right & Full Join
+
+```sql 
+INSERT INTO users (username)
+  VALUES('malis');
+
+select * from post as p
+right join users as u on  p.user_id = u.id;
+```
+```sql 
+select * from post as p
+right outer join users as u on  p.user_id = u.id;
+```
+
+![alt text](image-5.png)
+
+![alt text](image-6.png)
+
+![alt text](image-7.png)
+
+
+
+#### Full join 
+
+![alt text](image-8.png)
+
+```sql 
+select * from post as p
+full join users as u on  p.user_id = u.id;
+```
+
+```sql 
+select * from post as p
+full outer join users as u on  p.user_id = u.id;
+```
