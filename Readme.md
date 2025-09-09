@@ -126,3 +126,43 @@ full join users as u on  p.user_id = u.id;
 select * from post as p
 full outer join users as u on  p.user_id = u.id;
 ```
+
+## 47-6 All Joins Overview (Cross & Natural too)
+
+![alt text](image-9.png)
+
+### cross join 
+
+```sql 
+CREATE TABLE employees(
+    emp_id SERIAL PRIMARY KEY,
+    emp_name VARCHAR(50),
+    dept_id INT
+)
+
+CREATE TABLE departments (
+    dept_id SERIAL PRIMARY KEY,
+    dept_name VARCHAR(50)
+);
+
+INSERT INTO employees VALUES(1,'John Doe', 101);
+INSERT INTO employees VALUES(2,'Jane Smith', 102);
+
+INSERT INTO departments VALUES( 102,'Marketing');
+INSERT INTO departments VALUES( 101,'Human Resources');
+
+select * from employees 
+cross join departments;
+```
+
+![alt text](image-11.png)
+
+### natural join 
+
+```sql 
+select * from employees 
+natural join departments;
+```
+
+![alt text](image-12.png)
+
