@@ -70,3 +70,19 @@ select p.id, title,username from post as p
 select p.id, title,username from post as p
 inner join users as u on  p.user_id = u.id;
 ```
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+
+## 47-4 Left Join Made Easy
+
+```sql 
+INSERT INTO post (title)
+VALUES('Chazid Post');
+
+select * from post as p
+left join users as u on  p.user_id = u.id;
+```
+
+![alt text](image-4.png)
