@@ -247,3 +247,59 @@ group by department_name
 select extract(year from hire_date) as hire_year, count(*) as employee_hired from employees
   group by hire_year;
 ```
+
+## 47-10 Subquery Basics
+- SUBQUERIES : A subquery is a nested query within another sql statement 
+- and under which the subquery is written is called Primary Query/ Main Query
+
+- Retrieve all employees whose salary is greater than the highest of the hr department.
+#### here two things are required :
+- first find the hr department highest salary
+- compare the Hr department highest salary with all employee salary
+
+
+```sql 
+SELECT * FROM employees WHERE salary > (SELECT  max(salary) from employees where department_name = 'HR')
+```
+
+- Here SELECT * FROM employees WHERE salary > (SELECT  max(salary) from employees where department_name = 'HR') takes a lot of data and returns one data. This is called SCALER SUB QUERIES.
+- we have to take care where we use and how we use.
+
+```sql 
+SELECT *, (SELECT sum(salary) FROM employees) FROM employees;
+```
+
+- suppose we want to see the employees table and we want to see the sum of the employee salaries beside each of the employee
+
+```sql 
+SELECT *, (SELECT sum(salary) FROM employees) FROM employees;
+```
+
+- Suppose we have to show department name and beside the name we have to show the sum of the salary of each department's employees.
+
+
+```sql 
+select department_name, sum(salary) from employees
+  inner join departments using(department_id) 
+  group by department_name; 
+
+SELECT * FROM(SELECT department_name, sum(salary) FROM employees GROUP BY department_name) as sum_dept_salary;
+
+SELECT department_name FROM(SELECT department_name, sum(salary) FROM employees GROUP BY department_name) as sum_dept_salary;
+```
+
+```sql 
+SELECT * FROM employees WHERE salary > (SELECT  max(salary) from employees where department_name = 'HR')
+```
+
+```sql 
+SELECT employee_name, salary, department_name FROM employees
+WHERE department_name IN (SELECT department_name from employees where department_name LIKE '%R%')
+```
+
+```sql 
+SELECT employee_name, salary, department_name FROM employees
+WHERE department_name,salary IN (SELECT department_name from employees where department_name LIKE '%R%')
+```
+
+## 47-11 Functions Explained
